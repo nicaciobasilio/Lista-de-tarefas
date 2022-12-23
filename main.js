@@ -1,16 +1,20 @@
 $(document).ready(function(){
 
-    $('form').on('submit', function(e){
-        e.preventDefault();
+    $('#botao').click(function(event){
+        event.preventDefault();
+        let input = $("#inserir-tarefas");
+        let li = $("<li />").html(input.val());
+        $('#lista').append(li);
+        $('#inserir-tarefas').val("");
+        
+        clicarTarefa();
+        clicarDuas();
+    });
 
-        const inputNomeTarefa = $('#inserir-tarefas').val();
-        const novaTarefa = $('<li style= "text-decoration: none"></li>');
-        $($(inputNomeTarefa)).appendTo(novaTarefa);
+    function clicarTarefa() {
+        $('li').click(function(event){
+            $(this).css("text-decoration", "line-through")
+    }); 
+    }
 
-        $(novaTarefa).appendTo('li');
-
-        $('#inserir-tarefas').val('');
-    })
-
-})
-
+});
